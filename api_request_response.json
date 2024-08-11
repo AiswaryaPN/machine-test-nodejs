@@ -1,0 +1,334 @@
+[
+  {
+    "userAuthentication": [
+      {
+        "api": "http://localhost:8000/api/userAuth/signup",
+        "method": "POST",
+        "request": {
+          "firstName": "Ishaani",
+          "lastName": "Ish",
+          "profilePicture": "http://example.com/profile9.jpg",
+          "email": "ishani.ish@company.com",
+          "password": "Password45uerugr!",
+          "userType": "Manager"
+        },
+        "response": {
+          "message": "User created successfully"
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/userauth/login",
+        "method": "POST",
+        "request": {
+          "email": "ishani.ish@company.com",
+          "password": "Password45uerugr!"
+        },
+        "response": {
+          "token": "eyJhbGciOiJIUzI1NiIskpXVCJ9.eyJpZCI6IjY2Yjc4NmRMzMwOTAyOX0.LQBqTS0qFFyE",
+          "message": "Login was a success"
+        }
+      }
+    ],
+    "userManagement": [
+      {
+        "api": "http://localhost:8000/api/users/userList",
+        "method": "GET",
+        "header":"Authorization token",
+        "response": [
+          {
+              "_id": "66b786037dd10371d865240a",
+              "firstName": "ishhaani",
+              "lastName": "Ish",
+              "profilePicture": "http://example.com/profile9.jpg",
+              "email": "ishani.ish@company.com",
+              "password": "$2a$10$f7BTgYJbRwEsRjAuBEDGCuGfM35IV83johYzTR3b.gxK8HpN17dy6",
+              "userType": "Manager"
+          },
+          {
+              "_id": "66b786daf1fd1bb25bb1133a",
+              "firstName": "aarathi",
+              "lastName": "robin",
+              "profilePicture": "http://example.com/profile5.jpg",
+              "email": "aarathi.robin@tcs.com",
+              "password": "$2a$10$xTsvJP.8tG0lhv0pDeGgcOk/ihPx9qW.36Lh1s7s8q.cJ45J7syiy",
+              "userType": "Admin"
+          }
+      ]
+      },
+      {
+        "api": "http://localhost:8000/api/users/createMany",
+        "method": "POST",
+        "header":"Authorization token",
+        "request": [
+          {
+            "firstName": "selena",
+            "lastName": "gomez",
+            "profilePicture": "http://example.com/profile79.jpg",
+            "email": "selena.g@company.com",
+            "password": "User123490$",
+            "userType": "Manager"
+          },
+          {
+            "firstName": "swift",
+            "lastName": "taylor",
+            "profilePicture": "http://example.com/profile579.jpg",
+            "email": "swift.taylor@company.com",
+            "password": "User17788490*",
+            "userType": "Admin"
+          }
+        ],
+        "response": {
+          "message": "Users created successfully",
+          "userArray": [
+            {
+              "firstName": "selena",
+              "lastName": "gomez",
+              "profilePicture": "http://example.com/profile79.jpg",
+              "email": "selena.g@company.com",
+              "password": "User123490$",
+              "userType": "Manager",
+              "_id": "66b7aabc8637dcb96dcb2121"
+            },
+            {
+              "firstName": "swift",
+              "lastName": "taylor",
+              "profilePicture": "http://example.com/profile579.jpg",
+              "email": "swift.taylor@company.com",
+              "password": "User17788490*",
+              "userType": "Admin",
+              "_id": "66b7aabc8637fgt96dcb2178"
+            }
+          ],
+          "errors": []
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/users/create",
+        "method": "POST",
+        "header":"Authorization token",
+        "request": {
+          "firstName": "justin",
+          "lastName": "dao",
+          "profilePicture": "http://example.com/profile59.jpg",
+          "email": "justin.dao@tcs.com",
+          "password": "Passwo490$",
+          "userType": "Admin"
+        },
+        "response": {
+          "message": "User created successfully",
+          "savedUser": {
+            "firstName": "justin",
+            "lastName": "dao",
+            "profilePicture": "http://example.com/profile59.jpg",
+            "userType": "Admin",
+            "email": "justin.dao@tcs.com",
+            "password": "$2a$10$czRvwz98AzLNgfUzic7z/eiQNz1oeDfhpn8OzRrh5h/4kF8JoNJgq",
+            "_id": "66b78e4da3d8bb8f2b20753a"
+          }
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/users/update/66b7aabc8637dcb96dcb2121",
+        "method": "PUT",
+        "header":"Authorization token",
+        "request": {
+          "firstName": "Helena",
+          "lastName": "marie ANN",
+          "profilePicture": "http://example.com/profile507.jpg",
+          "email": "helena.marie@company.com",
+          "password": "User167ghhd8490*",
+          "userType": "Manager"
+        },
+        "response": {
+          "message": "User data updated successfully",
+          "updatedUser": {
+            "_id": "66b7aabc8637dcb96dcb2121",
+            "firstName": "Helena",
+            "lastName": "marie ANN",
+            "profilePicture": "http://example.com/profile507.jpg",
+            "email": "helena.marie@company.com",
+            "password": "$2a$10$DIn8z0HxqTMHPRaXrt74tO.gMQ.IBN0cvT1esxBR0xCdS5vWFhhPS",
+            "userType": "Manager"
+          }
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/users/delete/66b7aabc8637dcb96dcb2121",
+        "method": "DELETE",
+        "header":"Authorization token",
+        "response": {
+          "message": "User deleted successfully"
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/users/searchAndPagination?page=1&limit=2&search=Jane",
+        "method": "GET",
+        "header":"Authorization token",
+        "response": {
+          "page": 1,
+          "limit": 2,
+          "total": 1,
+          "totalPages": 1,
+          "data": [
+            {
+              "_id": "66b7afaf0f2d80785eb7683c",
+              "firstName": "Jane",
+              "lastName": "Doe",
+              "profilePicture": "http://example.com/profile2.jpg",
+              "email": "jane.doe@company.com",
+              "password": "$2a$10$yVgfhzNHY6puCi38veveX.aWUZXtgEhigdJNXi3dRPgjHl6Ck9vzS",
+              "userType": "Admin"
+            }
+          ]
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/users/sortAndPagination?page=1&limit=3&sortBy=firstName&sortOrder=desc",
+        "method": "GET",
+        "header":"Authorization token",
+        "response": {
+          "page": 1,
+          "limit": 3,
+          "total": 10,
+          "totalPages": 4,
+          "data": [
+            {
+              "_id": "66b79f9277900531fa7e9a42",
+              "firstName": "swift",
+              "lastName": "taylor",
+              "profilePicture": "http://example.com/profile579.jpg",
+              "email": "swift.taylor@company.com",
+              "password": "$ya$10$czRvwz67AzLNgfUzic7z/eiQNz1oeDfhfh8OzRrh5h/4kF8JoNJgq$",
+              "userType": "Admin"
+            },
+            {
+              "_id": "66b79f9277900531fa7e9a41",
+              "firstName": "selena",
+              "lastName": "gomez",
+              "profilePicture": "http://example.com/profile79.jpg",
+              "email": "selena.g@company.com",
+              "password": "$6a$10$czRvwz67AzLNgfUzic7z/eiQNz1oeDfhpn8OzRrh5h/4kF8JoNJgq$",
+              "userType": "Manager"
+            },
+            {
+              "_id": "66b78e4da3d8bb8f2b20753a",
+              "firstName": "justin",
+              "lastName": "dao",
+              "profilePicture": "http://example.com/profile59.jpg",
+              "userType": "Admin",
+              "email": "justin.dao@tcs.com",
+              "password": "$2a$10$czRvwz98AzLNgfUzic7z/eiQNz1oeDfhpn8OzRrh5h/4kF8JoNJgq"
+            }
+          ]
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/users/sortSearchPagination?page=1&limit=3&sortBy=lastName&sortOrder=asc&search=selena",
+        "method": "GET",
+        "header":"Authorization token",
+        "response": {
+          "page": 1,
+          "limit": 3,
+          "total": 1,
+          "totalPages": 1,
+          "data": [
+            {
+              "_id": "66b79f9277900531fa7e9a41",
+              "firstName": "selena",
+              "lastName": "gomez",
+              "profilePicture": "http://example.com/profile79.jpg",
+              "email": "selena.g@company.com",
+              "password": "User123490$",
+              "userType": "Manager"
+            }
+          ]
+        }
+      }
+    ],
+    "vegetables": [
+      {
+        "api": "http://localhost:8000/api/vegetables/createMany",
+        "method": "POST",
+        "request": [
+          {
+            "color": "#FF5733",
+            "price": 100.99,
+            "name": "Potato"
+          },
+          {
+            "color": "#28B463",
+            "price": 5.49,
+            "name": "Cucumber"
+          }
+        ],
+        "response": {
+          "message": "Vegetable created successfully",
+          "vegArray": [
+            {
+              "color": "#FF5733",
+              "price": 100.99,
+              "name": "Potato",
+              "_id": "66b7b8695821f0ce18015bf3"
+            },
+            {
+              "color": "#28B463",
+              "price": 5.49,
+              "name": "Cucumber",
+              "_id": "66b7b8695821f0ce18015bf4"
+            }
+          ],
+          "errors": []
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/vegetables/create",
+        "method": "POST",
+        "request": {
+          "color": "#FF5733",
+          "price": 10.99,
+          "name": "Tomato"
+        },
+        "response": {
+          "message": "Vegetable data created successfully",
+          "savedVegetable": {
+            "color": "#FF5733",
+            "price": 10.99,
+            "name": "Tomato",
+            "_id": "66b7b57246663e382fa91b2a"
+          }
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/vegetables/update/66b7b8695821f0ce18015bf3",
+        "method": "PUT",
+        "request": {
+          "color": "#FF3453",
+          "price": 100,
+          "name": "Potato"
+        },
+        "response": {
+          "message": "Vegetable updated successfully",
+          "updatedVegetable": {
+            "_id": "66b7b8695821f0ce18015bf3",
+            "color": "#FF3453",
+            "price": 700,
+            "name": "Potato"
+          }
+        }
+      },
+      {
+        "api": "http://localhost:8000/api/vegetables/delete/66b7b8695821f0ce18015bf3",
+        "method": "DELETE",
+        "response": {
+          "message": "Vegetable deleted successfully",
+          "vegetableByIdDel": {
+            "_id": "66b7b8695821f0ce18015bf3",
+            "color": "#FF3453",
+            "price": 700,
+            "name": "Potato"
+          }
+        }
+      }
+    ]
+  }
+]
